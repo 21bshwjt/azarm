@@ -5,5 +5,30 @@
     "functions": [],
     "variables": {},
     "resources": [],
-    "outputs": {}
-} // Test
+    "outputs": {
+        "output1": {
+            "type": "string",
+            "value": "[concat('string1','-',toUpper('string2'))]"
+        },
+        "output2": {
+            "type": "string",
+            "value": "[subscription().displayName]"
+        },
+        "output3": {
+            "type": "string",
+            "value": "[subscription().subscriptionId]"
+        },
+        "output4": {
+            "type": "string",
+            "value": "[subscription().id]"
+        },
+        "output5": {
+            "type": "string",
+            "value": "[subscription().tenantId]"
+        },
+        "output6": {
+            "type": "string",
+            "value": "[resourceGroup().id]"
+        }
+    }
+}
