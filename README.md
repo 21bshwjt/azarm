@@ -7,3 +7,4 @@
 - Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\ 
 - ARM FAQS
   https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/frequently-asked-questions
+- ARM Template Function https://cogan.to/1c3
