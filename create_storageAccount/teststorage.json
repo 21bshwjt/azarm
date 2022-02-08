@@ -25,12 +25,14 @@
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+      "storageapiVersion": "2021-04-01"  
+    },
     "resources": [
         {
             "name": "[parameters('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
+            "apiVersion": "[variables('storageapiVersion')]",
             "tags": {
                 "displayName": "storageaccount1"
             },
