@@ -38,3 +38,6 @@ New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -Templa
 - ARM FAQS
   https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/frequently-asked-questions
 - ARM Template Function https://cogan.to/1c3
+
+## Wiki
+https://21bshwjt.github.io/azarm/
