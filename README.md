@@ -1,6 +1,11 @@
 # Azure ARM Template
 
-- New-AzResourceGroup -Name arm-vm-vscode -Location eastus
+### Create Resource Group
+
+```powershell
+New-AzResourceGroup -Name arm-vm-vscode -Location eastus -Verbose
+```
+
 - New-AzResourceGroupDeployment -Name teststgARM -ResourceGroupName arm-vm-vscode -TemplateFile .\teststorage.json -TemplateParameterFile .\teststorage.param.json -Verbose
 - Remove-AzResourceGroup -Name arm-vm-vscode -Verbose
 - Test-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile .\azdeploy.json -TemplateParameterFile .\azdeploy.parameters.json -Verbose
