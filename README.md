@@ -10,8 +10,12 @@ New-AzResourceGroup -Name arm-vm-vscode -Location eastus -Verbose
 ```powershell
 New-AzResourceGroupDeployment -Name teststgARM -ResourceGroupName arm-vm-vscode -TemplateFile .\teststorage.json -TemplateParameterFile .\teststorage.param.json -Verbose
 ```
+### Remove Resource Group
 
-- Remove-AzResourceGroup -Name arm-vm-vscode -Verbose
+```powershell
+Remove-AzResourceGroup -Name arm-vm-vscode -Verbose
+```
+
 - Test-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile .\azdeploy.json -TemplateParameterFile .\azdeploy.parameters.json -Verbose
 - Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\ 
 - New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -WhatIfResultFormat ResourceIdOnly
