@@ -21,14 +21,20 @@ Remove-AzResourceGroup -Name arm-vm-vscode -Verbose
 Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\ 
 ```
 
-### Valivate Deployment using -whatif 
+### Validate Deployment using -whatif 
 
 ```powershell
 New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -WhatIfResultFormat ResourceIdOnly
 ```
-
-- New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -Confirm 
-- New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -Mode Complete                    
+### Validate & Deployment using -confirm
+```powershell
+New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -Confirm
+```
+### Validate Deployment using Deployment Mode
+```powershell
+New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -Mode Complete
+```
+### Blogs
 - ARM FAQS
   https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/frequently-asked-questions
 - ARM Template Function https://cogan.to/1c3
