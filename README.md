@@ -15,10 +15,18 @@ New-AzResourceGroupDeployment -Name teststgARM -ResourceGroupName arm-vm-vscode 
 ```powershell
 Remove-AzResourceGroup -Name arm-vm-vscode -Verbose
 ```
+### Export Templete from Resource Group
 
-- Test-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile .\azdeploy.json -TemplateParameterFile .\azdeploy.parameters.json -Verbose
-- Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\ 
-- New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -WhatIfResultFormat ResourceIdOnly
+```powershell
+Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\ 
+```
+
+### Valivate Deployment using -whatif 
+
+```powershell
+New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -WhatIfResultFormat ResourceIdOnly
+```
+
 - New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -Confirm 
 - New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -Mode Complete                    
 - ARM FAQS
