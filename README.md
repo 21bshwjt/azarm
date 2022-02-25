@@ -36,8 +36,9 @@ New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -Templa
 ```
 ```diff
 - 'Complete' Mode is risky Mode. Refer MSFT doc. before running that mode.
-+  MSFT KB : https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes
 ```
+MSFT KB : https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes
+
 
 ### Blogs
 - ARM FAQS
