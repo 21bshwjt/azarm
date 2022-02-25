@@ -35,7 +35,7 @@ New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -Templa
 New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -Mode Complete
 ```
 ```diff
-- 'Complete' Mode is risky Mode. Refer MSFT doc. before running that mode.
+- 'Complete' Mode is risky Mode. Refer MSFT kb before running that mode.
 ```
 MSFT KB : https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes
 
