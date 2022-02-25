@@ -34,7 +34,7 @@ New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -Templa
 ```powershell
 New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -Mode Complete
 ```
-![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) `Complete mode is risky Mode. Refer MSFT doc. before running that mode.`
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `Complete mode is risky Mode. Refer MSFT doc. before running that mode.`
 
 ### Blogs
 - ARM FAQS
