@@ -1,0 +1,87 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageaccountname": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage Account Name"
+            }
+        },
+        "storageaccounttype": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage Account Type"
+            },
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ],
+            "defaultValue": "Standard_LRS"
+        }
+    },
+    "functions": [],
+    "variables": {
+        "storageapiversion": "2021-04-01"
+    },
+    "resources": [
+
+        {
+            "name": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "[variables('storageapiversion')]",
+            "tags": {
+                "displayName": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]",
+                "Provisionedby:bshwjt": "13",
+                "e-mail": "bshwjt@yahoo.com",
+                "Department": "IT-DevOps",
+                "DeployedBy": "Biswajit",
+                "Team": "FAST",
+                "CretionCity": "Kolkata",
+                "CostCenter": "12345",
+                "State": "WB",
+                "RG": "[resourceGroup().name]",
+                "StorageAccountType": "[parameters('storageaccounttype')]"
+
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageaccounttype')]",
+                "tier": "Premium"
+            }
+        }
+    ],
+    "outputs": {
+        "storageaccountname": {
+            "type": "string",
+            "value": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]"
+        },
+        "StorageaccountType": {
+            "type": "string",
+            "value": "[parameters('storageaccounttype')]"
+        },
+        "storageapiversion": {
+            "type": "string",
+            "value": "[variables('storageapiversion')]"
+        },
+        "engname": {
+            "type": "string",
+            "value": "[concat('BISWAJIT',' ',toUpper('biswas'))]"
+        },
+        "subscriptionname": {
+            "type": "string",
+            "value": "[subscription().displayName]"
+        },
+        "Tenant": {
+            "type": "string",
+            "value": "[tenant().displayName]"
+        },
+        "resourcegroup": {
+            "type": "string",
+            "value": "[resourceGroup().name]"
+        }
+    }
+}
