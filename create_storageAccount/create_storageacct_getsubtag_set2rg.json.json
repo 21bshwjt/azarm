@@ -1,0 +1,97 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageaccountname": {
+            "type": "String",
+            "metadata": {
+                "description": "Storage Account Name"
+            }
+        },
+        "subscriptionid": {
+            "type": "String",
+            "metadata": {
+                "description": "subscriptionid"
+            }
+        },
+        "storageaccounttype": {
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ],
+            "type": "String",
+            "metadata": {
+                "description": "Storage Account Type"
+            }
+        }
+    },
+    "variables": {
+        "storageapiversion": "2021-04-01",
+        "tagResourceId": "[concat('/subscriptions/',parameters('subscriptionid'),'/providers/Microsoft.Resources/tags/default')]"
+    },
+    "functions": [],
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "[variables('storageapiversion')]",
+            "name": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]",
+                "Provisionedby:bshwjt": "13",
+                "e-mail": "bshwjt@yahoo.com",
+                "Department": "IT-DevOps",
+                "DeployedBy": "Biswajit",
+                "Team": "FAST",
+                "CretionCity": "Kolkata",
+                "CostCenter": "12345",
+                "State": "WB",
+                "RG": "[resourceGroup().name]",
+                "StorageAccountType": "[parameters('storageaccounttype')]"
+               
+            },
+            "sku": {
+                "name": "[parameters('storageaccounttype')]",
+                "tier": "Premium"
+            },
+            "kind": "StorageV2"
+        }
+    ],
+    "outputs": {
+        "storageaccountname": {
+            "type": "String",
+            "value": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]"
+        },
+        "StorageaccountType": {
+            "type": "String",
+            "value": "[parameters('storageaccounttype')]"
+        },
+        "storageapiversion": {
+            "type": "String",
+            "value": "[variables('storageapiversion')]"
+        },
+        "engname": {
+            "type": "String",
+            "value": "[concat('BISWAJIT',' ',toUpper('biswas'))]"
+        },
+        "subscriptionname": {
+            "type": "String",
+            "value": "[subscription().displayName]"
+        },
+        "Tenant": {
+            "type": "String",
+            "value": "[tenant().displayName]"
+        },
+        "resourcegroup": {
+            "type": "String",
+            "value": "[resourceGroup().name]"
+        },
+        "Tag": {
+            "type": "String",
+            "value": "[reference(variables('tagResourceId'),'2020-01-01').tags.devtagtest1]"
+        }
+    }
+}
