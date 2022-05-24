@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccountName": {
-            "value": "teststgfryyu129"
+            "value": "teststgfryyu12967"
         },
         "storageAccountType": {
             "value": "Standard_LRS"
