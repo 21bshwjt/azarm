@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "datafactoryname": {
+            "type": "string",
+            "metadata": {
+                "description": "Data Factory Name"
+            }
+        },
         "storagecount": {
             "type": "int",
             "metadata": {
@@ -51,18 +57,18 @@
                 "accountType": "[parameters('storageAccountType')]"
 
             }
-            
+
         },
         {
-      "type": "Microsoft.DataFactory/factories",
-      "apiVersion": "2018-06-01",
-      "name": "datafactorybshwjt1",
-      "location": "[resourceGroup().location]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "dependsOn": ["storagecopy"]
-      }
+            "type": "Microsoft.DataFactory/factories",
+            "apiVersion": "2018-06-01",
+            "name": "[parameters('datafactoryname')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "dependsOn": [ "storagecopy" ]
+        }
     ],
     "outputs": {}
 }
