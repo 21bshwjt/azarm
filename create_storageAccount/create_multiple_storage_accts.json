@@ -24,7 +24,7 @@
     },
     "resources": [
         {
-            "name": "[concat('storageacctb',copyIndex())]",
+            "name": "[concat('stg',uniqueString(resourceGroup().id),copyIndex())]",
             "copy": {
                 "name": "storagecopy",
                 "count": 5
@@ -33,7 +33,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "[variables('storageapiVersion')]",
             "tags": {
-                "displayName": "[concat('storageacctb',copyIndex())]"
+                "displayName": "[concat('stg',uniqueString(resourceGroup().id),copyIndex())]"
             },
             "location": "[resourceGroup().location]",
             "kind": "StorageV2",
