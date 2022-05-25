@@ -29,8 +29,8 @@
         {
             "name": "[concat(variables('storageaccountname'), '/default/container',copyIndex('copycontainer',1))]",
             "copy": {
-            "name": "copycontainer",
-            "count": "[parameters('cointainercount')]"
+                "name": "copycontainer",
+                "count": "[parameters('cointainercount')]"
             },
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2021-04-01",
