@@ -1,0 +1,86 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionid": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            }
+        },
+        "storagecount": {
+            "type": "int",
+            "metadata": {
+                "description": "Storage Account Count"
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage Account Type"
+            },
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+
+            ],
+            "defaultValue": "Standard_LRS"
+
+        }
+    },
+    "functions": [],
+    "variables": {
+        "storageapiVersion": "2021-04-01",
+        "tagResourceId": "[concat('/subscriptions/',parameters('subscriptionid'),'/providers/Microsoft.Resources/tags/default')]"
+
+    },
+    "resources": [
+        {
+            "name": "[concat('stg',uniqueString(resourceGroup().id),copyIndex('storagecopy'))]",
+            "copy": {
+                "name": "storagecopy",
+                "count": "[parameters('storagecount')]"
+
+            },
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "[variables('storageapiVersion')]",
+            "tags": {
+                "displayName": "[concat('stg',uniqueString(resourceGroup().id),copyIndex())]"
+            },
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Premium"
+            },
+            "properties": {
+                "accountType": "[parameters('storageAccountType')]"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/tags",
+            "apiVersion": "2021-04-01",
+            "name": "default",
+            "scope": "[resourceId('Microsoft.Storage/storageAccounts','123')]",
+            "properties": {
+                "tags": {
+                    "litagtest": "[reference(variables('tagResourceId'),'2020-01-01').tags.lidevtag]",
+                    "Year": "2022",
+                    "Project": "AzSec",
+                    "testx": "Biswajit"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts','123')]"
+            ]
+        }
+    ],
+    "outputs": {
+        "Tag": {
+            "type": "String",
+            "value": "[reference(variables('tagResourceId'),'2020-01-01').tags.lidevtag]"
+        }
+    }
+}
