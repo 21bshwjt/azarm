@@ -67,12 +67,12 @@
                 "tags": {
                     "litagtest": "[reference(variables('tagResourceId'),'2020-01-01').tags.lidevtag]",
                     "Ticket": "12345",
-                    "Project": "Tagging"                    
+                    "Project": "Tagging"
                 }
             },
             "dependsOn": [
-              //  "[resourceId('Microsoft.Storage/storageAccounts',toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('countcopy'))))]"
-               "storagecopy"
+                //  "[resourceId('Microsoft.Storage/storageAccounts',toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('countcopy'))))]"
+                "storagecopy"
             ]
         }
     ],
@@ -88,6 +88,13 @@
         "Tag": {
             "type": "String",
             "value": "[reference(variables('tagResourceId'),'2020-01-01').tags.lidevtag]"
+        },
+        "storagearray": {
+            "type": "array",
+            "copy": {
+                "count": "[variables('storagecount')]",
+                "input": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex()))]"
+            }
         }
     }
 }
