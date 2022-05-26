@@ -31,7 +31,7 @@
     "variables": {
         "storageapiversion": "2021-04-01",
         "tagResourceId": "[concat('/subscriptions/',parameters('subscriptionid'),'/providers/Microsoft.Resources/tags/default')]",
-        //"storageacctname": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id)))]"
+        "storagecount": 3
     },
     "functions": [],
     "resources": [
@@ -41,7 +41,7 @@
             "name": "[toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('storagecopy')))]",
             "copy": {
                 "name": "storagecopy",
-                "count": 5
+                "count": "[variables('storagecount')]"
 
             },
             "location": "[resourceGroup().location]",
@@ -60,19 +60,19 @@
             "scope": "[resourceId('Microsoft.Storage/storageAccounts',toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('countcopy'))))]",
             "copy": {
                 "name": "countcopy",
-                "count": 5
+                "count": "[variables('storagecount')]"
 
             },
             "properties": {
                 "tags": {
                     "litagtest": "[reference(variables('tagResourceId'),'2020-01-01').tags.lidevtag]",
-                    "Year": "2022",
-                    "Project": "AzSec",
-                    "testx": "Biswajit"
+                    "Ticket": "12345",
+                    "Project": "Tagging"                    
                 }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts',toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('countcopy'))))]"
+              //  "[resourceId('Microsoft.Storage/storageAccounts',toLower(concat(parameters('storageaccountname'),uniqueString(resourceGroup().id),copyIndex('countcopy'))))]"
+               "storagecopy"
             ]
         }
     ],
