@@ -26,6 +26,18 @@ Export-AzResourceGroup -ResourceGroupName polaris00123 -Path .\
 ```powershell
 New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -WhatIf -WhatIfResultFormat ResourceIdOnly
 ```
+### Validate Deployment using -whatif -PowerShell Spatting 
+
+```powershell
+$parameters = @{
+    ResourceGroupName = "arm_storageacct3"
+    templatefile = ".\azdeploy.json"
+    templateparameterfile = ".\azdeploy.parameters.json"
+    DeploymentName = "ARM_StorageAccountsDeploy"
+    }
+  
+New-AzResourceGroupDeployment @parameters -WhatIf
+```
 ### Validate & Deployment using -confirm
 ```powershell
 New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -TemplateFile .\winvm-template.json -TemplateParameterFile .\winvm-template.parameters.json -Confirm
