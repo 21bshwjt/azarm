@@ -51,6 +51,9 @@ New-AzResourceGroupDeployment -Name testvm -ResourceGroupName arm-vscode -Templa
 ```
 MSFT KB : https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deployment-modes
 
+### Deploy a VM to Azure using GitHub Actions
+https://www.youtube.com/watch?v=0kDr9OlAzlM
+
 
 ### Blogs
 - ARM FAQS
